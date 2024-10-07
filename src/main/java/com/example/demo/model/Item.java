@@ -1,15 +1,29 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.awt.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
+@Entity
 public class Item {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Column
     private String name;
+
+    @Column
     private LocalDate date;
+
+    @Column
     private Point location;
+
+    @Column
     private String contacts;
 }

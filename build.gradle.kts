@@ -24,9 +24,8 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     annotationProcessor("org.projectlombok:lombok")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
-    implementation("org.postgresql:postgresql:42.1.4")
-
-
+    implementation("org.postgresql:postgresql:42.7.2")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 }
 
 tasks.withType<Test> {
