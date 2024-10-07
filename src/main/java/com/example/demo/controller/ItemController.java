@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+
+import com.example.demo.DTO.ItemDto;
 import com.example.demo.model.Item;
 import com.example.demo.service.ItemService;
 import com.example.demo.service.ItemServiceImpl;
@@ -13,30 +15,29 @@ import java.util.List;
 @RestController
 public class ItemController {
     private final ItemService service;
-    private final ItemServiceImpl itemServiceImpl;
 
     @Autowired
-    public ItemController(ItemService itemService, ItemServiceImpl itemServiceImpl) {
+    public ItemController(ItemService itemService) {
         this.service = itemService;
-        this.itemServiceImpl = itemServiceImpl;
     }
 
     @PostMapping(value = "/item")
-    public ResponseEntity<?> create(@RequestBody Item item) {
+    public ResponseEntity<?> create(@RequestBody ItemDto item) {
         service.create(item);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/items")
     public ResponseEntity<List<Item>> getListItems() {
-        final List<Item> items = itemServiceImpl.getListItems();
+        final List<Item> items = service.getListItems();
         return !items.isEmpty()
                 ? new ResponseEntity<>(items, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
     @DeleteMapping(value = "/item/{id}")
     public ResponseEntity<?> delete(@PathVariable Integer id) {
-        final boolean deleted = itemServiceImpl.delete(id);
+        final boolean deleted = service.delete(id);
 
         return deleted
                 ? new ResponseEntity<>(HttpStatus.OK)
