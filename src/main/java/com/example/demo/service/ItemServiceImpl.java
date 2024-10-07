@@ -4,16 +4,12 @@ import com.example.demo.DTO.ItemDto;
 import com.example.demo.model.Item;
 import com.example.demo.repository.ItemRepository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @org.springframework.stereotype.Service
 public class ItemServiceImpl implements ItemService {
-    private static final Map<Integer, Item> ITEM_REPOSITORY_MAP = new HashMap<>();
 
-    ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     public ItemServiceImpl(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
@@ -33,11 +29,16 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<Item> getListItems() {
-        return new ArrayList<>(ITEM_REPOSITORY_MAP.values());
+        return itemRepository.findAll();
     }
 
     @Override
-    public boolean delete(int itemId) {
-        return ITEM_REPOSITORY_MAP.remove(itemId) != null;
+    public boolean delete(UUID itemId) {
+        try {
+            itemRepository.deleteById(itemId);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

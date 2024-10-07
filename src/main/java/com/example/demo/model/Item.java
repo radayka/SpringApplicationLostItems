@@ -5,14 +5,15 @@ import lombok.Data;
 
 import java.awt.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @Entity
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column
     private String name;
