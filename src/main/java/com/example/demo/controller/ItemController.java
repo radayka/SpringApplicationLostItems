@@ -1,12 +1,10 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.DTO.ItemDto;
-import com.example.demo.model.Item;
+import com.example.demo.dto.ItemDto;
+import com.example.demo.entity.Item;
 import com.example.demo.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,23 +20,22 @@ public class ItemController {
     }
 
     @PostMapping(value = "/item")
-    public ResponseEntity<?> create(@RequestBody ItemDto item) {
+    public void create(@RequestBody ItemDto item) {
         service.create(item);
-        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/items")
-    public ResponseEntity<List<Item>> getListItems() {
-        final List<Item> items = service.getListItems();
-        return new ResponseEntity<>(items, HttpStatus.OK);
+    public List<Item> getListItems() {
+        return service.getListItems();
+    }
+
+    @GetMapping(value = "/items/point")
+    public List<Item> getListItemsByRadius(@RequestParam double x, @RequestParam double y, @RequestParam double radius) {
+        return service.getListItemsByRadius(radius, x, y);
     }
 
     @DeleteMapping(value = "/item/{id}")
-    public ResponseEntity<?> delete(@PathVariable UUID id) {
-        final boolean deleted = service.delete(id);
-        return deleted
-                ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+    public boolean delete(@PathVariable UUID id) {
+        return service.delete(id);
     }
-
 }
