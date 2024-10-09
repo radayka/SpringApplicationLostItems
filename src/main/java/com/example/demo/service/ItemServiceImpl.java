@@ -7,8 +7,6 @@ import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;
 
-
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -24,9 +22,9 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<Item> getListItemsByRadius(double radius, Point point) {
+    public List<Item> getListItemsByRadius(double radius, double x, double y) {
         GeometryFactory geometryFactory = new GeometryFactory();
-        org.locationtech.jts.geom.Point centerPoint = geometryFactory.createPoint(new Coordinate(point.x, point.y));
+        org.locationtech.jts.geom.Point centerPoint = geometryFactory.createPoint(new Coordinate(x, y));
         Geometry searchArea = centerPoint.buffer(radius);
         List<Item> allItem = itemRepository.findAll();
         List<Item> itemsInRadius = new ArrayList<>();

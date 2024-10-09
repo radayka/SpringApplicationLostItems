@@ -4,7 +4,6 @@ package com.example.demo.service;
 import com.example.demo.DTO.ItemDto;
 import com.example.demo.model.Item;
 
-import java.awt.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,5 +14,5 @@ public interface ItemService {
 
     boolean delete(UUID id);
 
-    List<Item> getListItemsByRadius(double radius, Point point);
+    List<Item> getListItemsByRadius(double radius, double x, double y);
 }

@@ -32,11 +32,12 @@ public class ItemController {
     public ResponseEntity<List<Item>> getListItems() {
         return new ResponseEntity<>(service.getListItems(), HttpStatus.OK);
     }
+
     @GetMapping(value = "/items/point")
-    public ResponseEntity<?> getListItemsByRadius(Point point,double radius) {
-        point = new Point(point.x,point.y);
-        return new ResponseEntity<>(service.getListItemsByRadius(radius, point), HttpStatus.OK);
+    public ResponseEntity<?> getListItemsByRadius(@RequestParam double x, @RequestParam double y, @RequestParam double radius) {
+        return new ResponseEntity<>(service.getListItemsByRadius(radius, x, y), HttpStatus.OK);
     }
+
     @DeleteMapping(value = "/item/{id}")
     public ResponseEntity<?> delete(@PathVariable UUID id) {
         final boolean deleted = service.delete(id);
