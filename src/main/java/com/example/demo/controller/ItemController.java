@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,10 +30,13 @@ public class ItemController {
 
     @GetMapping(value = "/items")
     public ResponseEntity<List<Item>> getListItems() {
-        final List<Item> items = service.getListItems();
-        return new ResponseEntity<>(items, HttpStatus.OK);
+        return new ResponseEntity<>(service.getListItems(), HttpStatus.OK);
     }
-
+    @GetMapping(value = "/items/point")
+    public ResponseEntity<?> getListItemsByRadius(Point point,double radius) {
+        point = new Point(point.x,point.y);
+        return new ResponseEntity<>(service.getListItemsByRadius(radius, point), HttpStatus.OK);
+    }
     @DeleteMapping(value = "/item/{id}")
     public ResponseEntity<?> delete(@PathVariable UUID id) {
         final boolean deleted = service.delete(id);
