@@ -1,8 +1,9 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
-import com.example.demo.DTO.ItemDto;
-import com.example.demo.model.Item;
+import com.example.demo.dto.ItemDto;
+import com.example.demo.entity.Item;
 import com.example.demo.repository.ItemRepository;
+import com.example.demo.service.ItemService;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 
 @org.springframework.stereotype.Service
-public class ItemServiceImpl implements ItemService {
+class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
 

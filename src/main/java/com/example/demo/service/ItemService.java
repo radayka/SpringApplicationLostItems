@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
 
-import com.example.demo.DTO.ItemDto;
-import com.example.demo.model.Item;
+import com.example.demo.dto.ItemDto;
+import com.example.demo.entity.Item;
 
 import java.util.List;
 import java.util.UUID;
