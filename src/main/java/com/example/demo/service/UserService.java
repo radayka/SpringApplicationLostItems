@@ -12,6 +12,6 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    void update(User user);
+    void updateById(User user, UUID uuid);
 
 }

@@ -7,13 +7,14 @@ import com.example.demo.service.ItemService;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 
-@org.springframework.stereotype.Service
+@Service
 class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
