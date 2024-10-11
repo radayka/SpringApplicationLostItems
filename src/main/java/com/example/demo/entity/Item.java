@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Data
 @Entity
+@Table(name = "t_item")
 public class Item {
 
     @Id
