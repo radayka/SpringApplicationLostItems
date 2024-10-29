@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dto.ItemDto;
 import com.example.demo.entity.Item;
+import com.example.demo.entity.User;
 import com.example.demo.repository.ItemRepository;
 import com.example.demo.service.ItemService;
 import org.locationtech.jts.geom.Coordinate;
@@ -49,6 +50,7 @@ class ItemServiceImpl implements ItemService {
         newItem.setName(item.getName());
         newItem.setDate(item.getDate());
         newItem.setLocation(item.getLocation());
+        newItem.setUser(new User());
 
         itemRepository.save(newItem);
     }

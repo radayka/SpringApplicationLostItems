@@ -15,4 +15,6 @@ public class ItemDto {
     private Point location;
 
     private String contacts;
+
+    private UserShortDto user;
 }
