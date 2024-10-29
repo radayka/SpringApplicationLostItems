@@ -4,6 +4,7 @@ import com.example.demo.dto.ItemDto;
 import com.example.demo.entity.Item;
 import com.example.demo.entity.User;
 import com.example.demo.repository.ItemRepository;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.service.ItemService;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
@@ -19,9 +20,11 @@ import java.util.UUID;
 class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
+    private final UserRepository userRepository;
 
-    public ItemServiceImpl(ItemRepository itemRepository) {
+    public ItemServiceImpl(ItemRepository itemRepository, UserRepository userRepository) {
         this.itemRepository = itemRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -50,8 +53,9 @@ class ItemServiceImpl implements ItemService {
         newItem.setName(item.getName());
         newItem.setDate(item.getDate());
         newItem.setLocation(item.getLocation());
-        newItem.setUser(new User());
-
+        User newUser = userRepository.findById(item.getUser().getUserId())
+                .orElseThrow(() -> new RuntimeException("User Not Found"));
+        newItem.setUser(newUser);
         itemRepository.save(newItem);
     }
 
