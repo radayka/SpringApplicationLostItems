@@ -14,6 +14,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @ManyToOne
+    private Item item;
+
     @Column(nullable = false)
     private String firstName;
 
