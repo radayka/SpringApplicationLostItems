@@ -6,7 +6,10 @@ import java.util.UUID;
 
 @Data
 public class UserShortDto {
-    private UUID username;
+
+    private UUID userId;
+
     private String firstName;
+
     private String lastName;
 }
