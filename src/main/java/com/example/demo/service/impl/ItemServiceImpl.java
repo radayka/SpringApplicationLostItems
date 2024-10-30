@@ -53,7 +53,7 @@ class ItemServiceImpl implements ItemService {
         newItem.setName(item.getName());
         newItem.setDate(item.getDate());
         newItem.setLocation(item.getLocation());
-        User newUser = userRepository.findById(item.getUser().getUserId())
+        User newUser = userRepository.findById(item.getUserId())
                 .orElseThrow(() -> new RuntimeException("User Not Found"));
         newItem.setUser(newUser);
         itemRepository.save(newItem);
