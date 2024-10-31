@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.awt.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 public class ItemCreateDto {
@@ -16,5 +17,5 @@ public class ItemCreateDto {
 
     private String contacts;
 
-    private UserShortDto user;
+    private UUID userId;
 }
