@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.dto.ItemCreateDto;
 import com.example.demo.dto.ItemDto;
 import com.example.demo.entity.Item;
 import com.example.demo.service.ItemService;
@@ -20,17 +21,17 @@ public class ItemController {
     }
 
     @PostMapping(value = "/item")
-    public void create(@RequestBody ItemDto item) {
+    public void create(@RequestBody ItemCreateDto item) {
         service.create(item);
     }
 
     @GetMapping(value = "/items")
-    public List<Item> getListItems() {
+    public List<ItemDto> getListItems() {
         return service.getListItems();
     }
 
     @GetMapping(value = "/items/point")
-    public List<Item> getListItemsByRadius(@RequestParam double x, @RequestParam double y, @RequestParam double radius) {
+    public List<ItemDto> getListItemsByRadius(@RequestParam double x, @RequestParam double y, @RequestParam double radius) {
         return service.getListItemsByRadius(radius, x, y);
     }
 

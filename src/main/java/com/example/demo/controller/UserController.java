@@ -32,6 +32,7 @@ public class UserController {
     public User getUserById(@PathVariable UUID id) {
         return service.getUserById(id);
     }
+
     @PutMapping(value = "/user/{id}")
     public void updateById(@RequestBody UserDto user, @PathVariable UUID id) {
         service.updateById(user,id);
