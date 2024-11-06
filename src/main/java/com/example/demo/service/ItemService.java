@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 
+import com.example.demo.dto.ItemCreateDto;
 import com.example.demo.dto.ItemDto;
 import com.example.demo.entity.Item;
 
@@ -8,11 +9,11 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ItemService {
-    void create(ItemDto item);
+    void create(ItemCreateDto item);
 
-    List<Item> getListItems();
+    List<ItemDto> getListItems();
 
     boolean delete(UUID id);
 
-    List<Item> getListItemsByRadius(double radius, double x, double y);
+    List<ItemDto> getListItemsByRadius(double radius, double x, double y);
 }
