@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.service.MessageService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
@@ -16,7 +17,7 @@ public class MessageController {
     }
 
     @PostMapping(value = "/chat/{id}/message/write")
-    private void writeMessage(@PathVariable UUID id) {
-        messageService.writeMessage(id, "Hello World");
+    private void writeMessage(@RequestParam String message, @PathVariable UUID id) {
+        messageService.writeMessage(id, message);
     }
 }

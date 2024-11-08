@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -14,22 +11,22 @@ import java.util.UUID;
 public class Message {
 
     @Id
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotNull
-    @NotBlank
+    @Column
     private String message;
 
-    @NotNull
+    @Column
     private LocalDateTime sendTime;
 
-    @NotNull
+    @Column
     private User author;
 
+    @Column
     private Chat chat;
 
-    @NotNull
+    @Column
     private boolean deleted;
 
 }
