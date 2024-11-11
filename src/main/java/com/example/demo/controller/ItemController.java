@@ -3,7 +3,6 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.ItemCreateDto;
 import com.example.demo.dto.ItemDto;
-import com.example.demo.entity.Item;
 import com.example.demo.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
