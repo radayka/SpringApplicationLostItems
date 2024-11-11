@@ -1,12 +1,15 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.dto.ItemDto;
 import com.example.demo.dto.UserDto;
+import com.example.demo.entity.Item;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
@@ -33,13 +36,13 @@ class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(UUID uuid) {
-        return userRepository.findById(uuid).orElse(null);
+    public UserDto getUserById(UUID uuid) {
+        return convertToDto(userRepository.findById(uuid).orElse(null));
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserDto> getAllUsers() {
+        return convertToDto(userRepository.findAll());
     }
 
     @Override
@@ -52,5 +55,16 @@ class UserServiceImpl implements UserService {
         updateUser.setPassword(encoder.encodeToString(user.getPassword().getBytes()));
 
         userRepository.save(updateUser);
+    }
+
+    private UserDto convertToDto(User user) {
+        return new UserDto();
+    }
+    private List<UserDto> convertToDto(List<User> users) {
+        List<UserDto> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(convertToDto(user));
+        }
+        return userDtos;
     }
 }
