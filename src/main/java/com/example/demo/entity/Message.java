@@ -18,7 +18,7 @@ public class Message {
     private String message;
 
     @Column
-    private LocalDateTime sendTime;
+    private LocalDateTime timestamp;
 
     @Column
     private User author;

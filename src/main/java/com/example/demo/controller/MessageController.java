@@ -17,7 +17,7 @@ public class MessageController {
     }
 
     @PostMapping(value = "/chat/{id}/message/write")
-    private void writeMessage(@RequestParam String message, @PathVariable UUID id) {
-        messageService.writeMessage(id, message);
+    private void writeMessage(@RequestParam String message, @PathVariable UUID id, UUID chatId) {
+        messageService.writeMessage(id, chatId, message);
     }
 }
