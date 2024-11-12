@@ -18,12 +18,14 @@ public class Message {
     private String message;
 
     @Column
-    private LocalDateTime timestamp;
+    private LocalDateTime sendTime;
 
-    @Column
+    @JoinColumn
+    @ManyToOne
     private User author;
 
-    @Column
+    @JoinColumn
+    @ManyToOne
     private Chat chat;
 
     @Column

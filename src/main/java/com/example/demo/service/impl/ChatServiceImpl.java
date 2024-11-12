@@ -22,6 +22,8 @@ public class ChatServiceImpl implements ChatService {
     public void createChat(List<UUID> userIds) {
         if (userIds == null || userIds.isEmpty()) {
             throw new IllegalArgumentException("Список пользователей не может быть пустым");
+        } else if (userIds.size() > 3) {
+            throw new IllegalArgumentException("Список пользователей не может превышать 2");
         }
         Chat chat = new Chat();
         chat.setId(UUID.randomUUID());

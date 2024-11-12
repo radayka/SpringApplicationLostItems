@@ -34,7 +34,7 @@ public class MessageServiceImpl implements MessageService {
         newMessage.setMessage(message);
         newMessage.setAuthor(user);
         newMessage.setChat(chat);
-        newMessage.setTimestamp(LocalDateTime.now());
+        newMessage.setSendTime(LocalDateTime.now());
         messageRepository.save(newMessage);
     }
 }
