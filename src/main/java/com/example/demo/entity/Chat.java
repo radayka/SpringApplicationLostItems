@@ -24,9 +24,7 @@ public class Chat {
     )
     private List<User> users = new ArrayList<>();
 
-    @OneToMany(mappedBy = "chat",
-              cascade = CascadeType.ALL,
-              orphanRemoval = true)
+    @OneToMany(mappedBy = "chat")
     private List<Message> messages = new ArrayList<>();
 
 }

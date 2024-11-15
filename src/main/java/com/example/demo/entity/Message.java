@@ -16,20 +16,18 @@ public class Message {
     private UUID id;
 
     @Lob
-    @NotNull
+    @Column(nullable = false)
     private String message;
 
-    @NotNull
+    @Column(nullable = false)
     private LocalDateTime sendTime;
 
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
-    @NotNull
     private User author;
 
     @ManyToOne
     @JoinColumn(name = "chat_id", nullable = false)
-    @NotNull
     private Chat chat;
 
     @Column(nullable = false)
