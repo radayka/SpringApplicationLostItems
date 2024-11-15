@@ -24,7 +24,7 @@ public class Message {
     @ManyToOne
     private User author;
 
-    @JoinColumn
+    @JoinColumn(name = "chat", nullable = false)
     @ManyToOne
     private Chat chat;
 
