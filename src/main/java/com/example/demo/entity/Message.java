@@ -20,7 +20,7 @@ public class Message {
     @Column
     private LocalDateTime sendTime;
 
-    @JoinColumn
+    @JoinColumn(name = "author", nullable = false)
     @ManyToOne
     private User author;
 
