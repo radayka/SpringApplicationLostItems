@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,13 +12,21 @@ import java.util.UUID;
 public class Chat {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(
+            strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column
-    private List<User> users;
+    @ManyToMany
+    @JoinTable(
+            name = "chat_users",
+            joinColumns = @JoinColumn(name = "chat_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<User> users = new ArrayList<>();
 
-    @Column
-    private List<Message> messages;
+    @OneToMany(mappedBy = "chat",
+              cascade = CascadeType.ALL,
+              orphanRemoval = true)
+    private List<Message> messages = new ArrayList<>();
 
 }
