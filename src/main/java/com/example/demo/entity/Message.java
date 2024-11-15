@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -14,19 +15,21 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column
+    @Column(nullable = false)
     private String message;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime sendTime;
 
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
     private User author;
 
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "chat_id", nullable = false)
     private Chat chat;
 
-    @Column
+    @Column(nullable = false)
     private boolean deleted;
-
 }
+

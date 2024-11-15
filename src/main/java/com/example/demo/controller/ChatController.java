@@ -22,7 +22,7 @@ public class ChatController {
 
     @PostMapping(value = "/chat")
     @ResponseStatus(HttpStatus.CREATED)
-    private void createChat(@RequestBody List<UUID> users) {
+    public void createChat(@RequestBody List<UUID> users) {
         service.createChat(users);
     }
 

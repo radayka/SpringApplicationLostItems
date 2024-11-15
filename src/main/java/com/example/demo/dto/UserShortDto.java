@@ -4,8 +4,6 @@ import lombok.Data;
 
 @Data
 public class UserShortDto {
-
     private String firstName;
-
     private String lastName;
 }

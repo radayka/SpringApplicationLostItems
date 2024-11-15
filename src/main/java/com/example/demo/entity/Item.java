@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.awt.*;
@@ -20,10 +21,12 @@ public class Item {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column
+    @Column(nullable = false)
+    @NotNull
     private String name;
 
-    @Column
+    @Column(nullable = false)
+    @NotNull
     private LocalDate date;
 
     @Column
