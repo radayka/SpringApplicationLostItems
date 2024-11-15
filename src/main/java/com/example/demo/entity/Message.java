@@ -15,7 +15,6 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Lob
     @Column(nullable = false)
     private String message;
 

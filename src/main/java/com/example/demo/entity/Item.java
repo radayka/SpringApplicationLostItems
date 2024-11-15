@@ -32,7 +32,6 @@ public class Item {
     @Column
     private Point location;
 
-    @Lob
     @Column
     private String contacts;
 }
