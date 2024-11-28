@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.telegramIntegration;
 
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
