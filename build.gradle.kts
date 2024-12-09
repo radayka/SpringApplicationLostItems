@@ -18,16 +18,30 @@ repositories {
 }
 
 dependencies {
+
+    // Spring
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    // DB
+    implementation("org.postgresql:postgresql:42.7.2")
+
+    // Documentation
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+
+    // Geometry
+    implementation("org.locationtech.jts:jts-core:1.20.0")
+
+    // Telegram
+    implementation("org.telegram:telegrambots-springboot-longpolling-starter:7.10.0")
+
+    // Lombok
     implementation("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
+    // Testing
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    annotationProcessor("org.projectlombok:lombok")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
-    implementation("org.postgresql:postgresql:42.7.2")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation ("org.locationtech.jts:jts-core:1.20.0")
-    implementation("org.telegram:telegrambots:6.7.0")
 }
 
 tasks.withType<Test> {

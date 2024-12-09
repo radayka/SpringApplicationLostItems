@@ -1,8 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dto.ItemDto;
 import com.example.demo.dto.UserDto;
-import com.example.demo.entity.Item;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
@@ -17,7 +15,7 @@ import java.util.UUID;
 
 @Service
 @AllArgsConstructor
-class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
@@ -55,9 +53,11 @@ class UserServiceImpl implements UserService {
         userRepository.save(updateUser);
     }
 
+    // TODO Сделать маппинг
     private UserDto convertToDto(User user) {
         return new UserDto();
     }
+
     private List<UserDto> convertToDto(List<User> users) {
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
