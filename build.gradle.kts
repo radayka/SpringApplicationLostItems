@@ -34,6 +34,7 @@ dependencies {
 
     // Telegram
     implementation("org.telegram:telegrambots-spring-boot-starter:6.9.7.1")
+    implementation("org.telegram:telegrambots-longpolling:8.0.0")
 
     // Lombok
     implementation("org.projectlombok:lombok")
