@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableJpaRepositories
 @SpringBootApplication
-public class Demo1Application {
+public class LostItemsApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(Demo1Application.class, args);
-        // https://localhost:8080
+        SpringApplication.run(LostItemsApplication.class, args);
     }
 
 }

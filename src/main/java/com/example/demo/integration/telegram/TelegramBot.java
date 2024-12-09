@@ -1,4 +1,4 @@
-package com.example.demo.telegramIntegration;
+package com.example.demo.integration.telegram;
 
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -11,6 +11,8 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final String botToken;
     private final String botUsername;
 
+
+    // TODO Метод deprecated. Заменить
     public TelegramBot(String botUsername, String botToken) {
         this.botUsername = botUsername;
         this.botToken = botToken;
@@ -28,6 +30,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             try {
                 execute(sendMessage);
             } catch (TelegramApiException e) {
+                // TODO Добавить нормальное логирование. Использовать аннотацию @Slf4j - Simple logging facade for java от ломбока
                 e.printStackTrace();
             }
         }

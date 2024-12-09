@@ -1,4 +1,4 @@
-package com.example.demo.telegramIntegration;
+package com.example.demo.integration.telegram;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
