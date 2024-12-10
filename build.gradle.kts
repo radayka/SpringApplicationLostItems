@@ -33,7 +33,8 @@ dependencies {
     implementation("org.locationtech.jts:jts-core:1.20.0")
 
     // Telegram
-    implementation("org.telegram:telegrambots-springboot-longpolling-starter:7.10.0")
+    implementation("org.telegram:telegrambots-spring-boot-starter:6.9.7.1")
+
 
     // Lombok
     implementation("org.projectlombok:lombok")

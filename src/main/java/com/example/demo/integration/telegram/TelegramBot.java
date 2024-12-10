@@ -1,15 +1,25 @@
 package com.example.demo.integration.telegram;
 
-import org.telegram.telegrambots.longpolling.util.LongPollingSingleThreadUpdateConsumer;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 
-public class TelegramBot implements LongPollingSingleThreadUpdateConsumer {
+@Component
+public class TelegramBot extends TelegramLongPollingBot {
+
+    public TelegramBot(@Value("${bot.token}") String botToken) {
+        super(botToken);
+    }
 
     @Override
-    public void consume(Update update) {
-        if (update.hasMessage() && update.getMessage().hasText()) {
-            System.out.println(update.getMessage().getText());
-        }
+    public void onUpdateReceived(Update update) {
+
+    }
+
+    @Override
+    public String getBotUsername() {
+        return "";
     }
 }
