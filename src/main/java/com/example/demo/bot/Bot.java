@@ -2,6 +2,7 @@ package com.example.demo.bot;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient;
 import org.telegram.telegrambots.longpolling.util.LongPollingSingleThreadUpdateConsumer;
@@ -16,7 +17,8 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
 public class Bot implements LongPollingSingleThreadUpdateConsumer {
     private final TelegramClient telegramClient;
 
-    String botToken = "7650653873:AAHhU4cEZG9Rqu6wYCZOT2tJ3YRhH-35gyk";
+    @Value("${telegram.bot.token}")
+    String botToken;
 
     public Bot() {
         this.telegramClient = new OkHttpTelegramClient(botToken);
