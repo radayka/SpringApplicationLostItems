@@ -2,20 +2,21 @@ package com.example.demo.bot;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.longpolling.TelegramBotsLongPollingApplication;
 
-@Component
 @Slf4j
-public class TelegramBotRegister {
+@Component
+public class TelegramBotRegistrar {
 
-
-    String token = "7650653873:AAHhU4cEZG9Rqu6wYCZOT2tJ3YRhH-35gyk";
+    @Value("${telegram.bot.token}")
+    private String token;
 
     @PostConstruct
-    public void startBot() {
+    public void registerBot() {
         try (TelegramBotsLongPollingApplication botsApplication = new TelegramBotsLongPollingApplication()) {
-            botsApplication.registerBot(token, new Bot());
+            botsApplication.registerBot(token, new Bot(token));
             log.info("Bot started");
         } catch (Exception e) {
             log.error(e.getMessage());
