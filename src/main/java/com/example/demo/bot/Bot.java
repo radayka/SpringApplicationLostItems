@@ -16,7 +16,6 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
 public class Bot implements LongPollingSingleThreadUpdateConsumer {
     private final TelegramClient telegramClient;
 
-
     String botToken = "7650653873:AAHhU4cEZG9Rqu6wYCZOT2tJ3YRhH-35gyk";
 
     public Bot() {
@@ -26,18 +25,30 @@ public class Bot implements LongPollingSingleThreadUpdateConsumer {
     @Override
     public void consume(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
-            String text = update.getMessage().getText();
-            long chatId = update.getMessage().getChatId();
-
-            SendMessage message = SendMessage
-                    .builder()
-                    .chatId(chatId)
-                    .text(text)
-                    .build();
-            try {
-                telegramClient.execute(message);
-            } catch (TelegramApiException telegramApiException) {
-                log.error(telegramApiException.getMessage());
+            if (update.getMessage().getText().equals("/start")) {
+                long chatId = update.getMessage().getChatId();
+                SendMessage message = SendMessage
+                        .builder()
+                        .chatId(chatId)
+                        .text("Привет!")
+                        .build();
+                try {
+                    telegramClient.execute(message);
+                } catch (TelegramApiException telegramApiException) {
+                    log.error(telegramApiException.getMessage());
+                }
+            }else {
+                long chatId = update.getMessage().getChatId();
+                SendMessage message = SendMessage
+                        .builder()
+                        .chatId(chatId)
+                        .text("Неизвестная команда")
+                        .build();
+                try {
+                    telegramClient.execute(message);
+                } catch (TelegramApiException telegramApiException) {
+                    log.error(telegramApiException.getMessage());
+                }
             }
         }
     }
