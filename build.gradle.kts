@@ -34,6 +34,8 @@ dependencies {
 
     // Telegram
     implementation("org.telegram:telegrambots-springboot-longpolling-starter:7.4.0")
+    implementation("org.telegram:telegrambots-client:8.0.0")
+
 
 
     implementation("javax.xml.bind:jaxb-api:2.3.1")
