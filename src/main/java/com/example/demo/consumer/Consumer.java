@@ -37,7 +37,7 @@ public class Consumer implements LongPollingSingleThreadUpdateConsumer {
                     case "/addItem" -> {
                         addItem.execute();
                     }
-                    case "/addUser" ->{
+                    case "/addUser" -> {
                         addUser.execute();
                     }
                     case "/deleteItem" -> {
