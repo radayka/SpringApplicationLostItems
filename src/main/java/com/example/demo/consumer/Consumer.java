@@ -1,5 +1,7 @@
 package com.example.demo.consumer;
 
+import com.example.demo.bot.commands.AddItem;
+import com.example.demo.bot.commands.AddUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -14,12 +16,15 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
 @RequiredArgsConstructor
 public class Consumer implements LongPollingSingleThreadUpdateConsumer {
     private final TelegramClient telegramClient;
+    AddItem addItem;
+    AddUser addUser;
 
     @Override
     public void consume(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String message = update.getMessage().getText();
             long chatId = update.getMessage().getChatId();
+            log.info(message);
             try {
                 switch (message) {
                     case "/start" -> {
@@ -30,11 +35,10 @@ public class Consumer implements LongPollingSingleThreadUpdateConsumer {
                         telegramClient.execute(sendMessage);
                     }
                     case "/addItem" -> {
-                        SendMessage sendMessage = SendMessage.builder()
-                                .chatId(chatId)
-                                .text("Предмет добавлен")
-                                .build();
-                        telegramClient.execute(sendMessage);
+                        addItem.execute();
+                    }
+                    case "/addUser" ->{
+                        addUser.execute();
                     }
                     case "/deleteItem" -> {
                         SendMessage sendMessage = SendMessage.builder()
