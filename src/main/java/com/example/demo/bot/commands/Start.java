@@ -1,7 +1,6 @@
 package com.example.demo.bot.commands;
 
 import com.example.demo.bot.service.Command;
-import com.example.demo.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -13,18 +12,16 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class DeleteItem implements Command {
+public class Start implements Command {
 
-    private final ItemRepository itemRepository;
     private final TelegramClient telegramClient;
 
     @Override
     public void execute(Update update) {
-        itemRepository.deleteById(update.getMessage().getFrom().getId());
         SendMessage sendMessage = SendMessage
                 .builder()
                 .chatId(update.getMessage().getChatId())
-                .text("Предмет удалён")
+                .text("Привет!")
                 .build();
         try {
             telegramClient.execute(sendMessage);
