@@ -5,16 +5,18 @@ import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.generics.TelegramClient;
 
 @RequiredArgsConstructor
+@Component
 @Slf4j
 public class AddUser implements Command {
-    UserRepository userRepository;
-    TelegramClient telegramClient;
+    private final UserRepository userRepository;
+    private final TelegramClient telegramClient;
 
     @Override
     public void execute(Update update) {

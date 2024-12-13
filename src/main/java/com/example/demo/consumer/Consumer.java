@@ -14,19 +14,18 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-
 public class Consumer implements LongPollingSingleThreadUpdateConsumer {
-    private final TelegramClient telegramClient;
-    AddItem addItem;
-    AddUser addUser;
 
+    private final TelegramClient telegramClient;
+    private final AddItem addItem;
+    private final AddUser addUser;
 
     @Override
     public void consume(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String message = update.getMessage().getText();
+            log.info(addItem.toString());
             long chatId = update.getMessage().getChatId();
-            log.info(message);
             try {
                 switch (message) {
                     case "/start" -> {
