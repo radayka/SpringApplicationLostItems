@@ -4,29 +4,20 @@ import com.example.demo.bot.service.Command;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.generics.TelegramClient;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
-public class Start implements Command {
+public class Start extends AbstractCommand implements Command {
 
-    private final TelegramClient telegramClient;
+
+    public Start(TelegramClient telegramClient) {
+        super(telegramClient);
+    }
 
     @Override
     public void execute(Update update) {
-        SendMessage sendMessage = SendMessage
-                .builder()
-                .chatId(update.getMessage().getChatId())
-                .text("Привет!")
-                .build();
-        try {
-            telegramClient.execute(sendMessage);
-        } catch (TelegramApiException e) {
-            log.error(e.getMessage());
-        }
+        execute(update, "Привет!");
     }
 }
