@@ -32,7 +32,11 @@ public class AddItem implements Command {
         newItem.setUser(newUser);
         newItem.setDate(LocalDate.ofEpochDay(update.getMessage().getDate()));
         itemRepository.save(newItem);
-        SendMessage sendMessage = SendMessage.builder().chatId(update.getMessage().getChatId()).text("Предмет добавлен").build();
+        SendMessage sendMessage = SendMessage
+                .builder()
+                .chatId(update.getMessage().getChatId())
+                .text("Предмет добавлен")
+                .build();
         try {
             telegramClient.execute(sendMessage);
         } catch (TelegramApiException e) {
