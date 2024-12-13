@@ -71,7 +71,7 @@ class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public boolean delete(UUID itemId) {
+    public boolean delete(Long itemId) {
         try {
             itemRepository.deleteById(itemId);
             return true;

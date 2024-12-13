@@ -13,7 +13,7 @@ public interface ItemService {
 
     List<ItemDto> getListItems();
 
-    boolean delete(UUID id);
+    boolean delete(Long id);
 
     List<ItemDto> getListItemsByRadius(double radius, double x, double y);
 }
