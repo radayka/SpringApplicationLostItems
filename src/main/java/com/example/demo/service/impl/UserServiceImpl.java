@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,12 +21,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void create(UserDto user) {
         User newUser = new User();
-        Base64.Encoder encoder = Base64.getEncoder();
         newUser.setFirstName(user.getFirstName());
         newUser.setLastName(user.getLastName());
         newUser.setUsername(user.getUsername());
-        newUser.setPassword(encoder.encodeToString(user.getPassword().getBytes()));
-
         userRepository.save(newUser);
     }
 
@@ -43,12 +39,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateById(UserDto user, UUID uuid) {
-        Base64.Encoder encoder = Base64.getEncoder();
         User updateUser = userRepository.findById(uuid).orElseThrow(EntityNotFoundException::new);
         updateUser.setFirstName(user.getFirstName());
         updateUser.setLastName(user.getLastName());
         updateUser.setUsername(user.getUsername());
-        updateUser.setPassword(encoder.encodeToString(user.getPassword().getBytes()));
 
         userRepository.save(updateUser);
     }

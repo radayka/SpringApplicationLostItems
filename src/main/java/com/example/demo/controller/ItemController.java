@@ -35,7 +35,7 @@ public class ItemController {
     }
 
     @DeleteMapping(value = "/item/{id}")
-    public boolean delete(@PathVariable UUID id) {
+    public boolean delete(@PathVariable Long id) {
         return service.delete(id);
     }
 }
