@@ -14,10 +14,12 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
 @Slf4j
 @Component
 @RequiredArgsConstructor
+
 public class Consumer implements LongPollingSingleThreadUpdateConsumer {
     private final TelegramClient telegramClient;
     AddItem addItem;
     AddUser addUser;
+
 
     @Override
     public void consume(Update update) {
@@ -35,10 +37,10 @@ public class Consumer implements LongPollingSingleThreadUpdateConsumer {
                         telegramClient.execute(sendMessage);
                     }
                     case "/addItem" -> {
-                        addItem.execute();
+                        addItem.execute(update);
                     }
                     case "/addUser" -> {
-                        addUser.execute();
+                        addUser.execute(update);
                     }
                     case "/deleteItem" -> {
                         SendMessage sendMessage = SendMessage.builder()

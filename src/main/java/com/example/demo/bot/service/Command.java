@@ -1,5 +1,7 @@
 package com.example.demo.bot.service;
 
-public interface Command {
-    void execute();
+import org.telegram.telegrambots.meta.api.objects.Update;
+
+public interface Command{
+    void execute(Update update);
 }
