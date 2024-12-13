@@ -14,8 +14,7 @@ public class DefaultCommand extends AbstractCommand implements Command {
         super(telegramClient);
     }
 
-
     public void execute(Update update) {
-        execute(update, "Привет!");
+        execute(update, "Незвестная команда");
     }
 }
