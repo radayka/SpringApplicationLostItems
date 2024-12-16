@@ -1,6 +1,6 @@
 package com.example.demo.bot;
 
-import com.example.demo.consumer.Consumer;
+import com.example.demo.bot.consumer.Consumer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
